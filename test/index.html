@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    </head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        <h1>{{ message}}</h1>
+        <p v-html="messageHtml"></p>
+        <p v-if="values.number !== 1">TEST</p>
+        <p v-else>Not Test</p>
+        
+        <img v-bind:src="image">
+
+        
+        <ul v-if="array.length">
+            <li v-for="(item,index) in array" v-bind:key="index">{{index}}{{item}}</li>
+        </ul>
+
+        <button v-on:click="sayHello">Method</button>
+        <button v-on:click="randNumber">Container</button>
+
+        <form action="">
+            <input v-model="form.name" type="text" name="" id="">
+            <input v-model="form.surname" type="text" name="" id="">
+        </form>
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    form:{
+                        name:'Pepe',
+                        surname:'Pepe'
+                    },
+                    message: 'Hello Vue!',
+                    messageHtml: '<span>SPAN</span>',
+                    image:'/Logo.png',
+                    values:{
+                        number: 1,
+                        boolean: true
+                    },
+                    array:[1,2,3,4,5,6,7,8,9,10,11]   
+                }
+            },
+            methods:{
+                
+                sayHello: function(e){
+                    console.log("hello");
+                   
+                    console.log(Math.random());
+                }
+            },
+            computed:{
+                randNumber: function(){
+                    console.log(Math.random());
+                }
+            }
+            
+        }).mount('#app');
+        
+    </script>
+    
+   </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .post{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 50%;
+            
+        }
+        button{
+            height: fit-content;
+        }
+    </style>
+    </head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+
+    <div id="app">
+        <h1>Crear Posts</h1>
+        
+        <form action="">
+            <div>
+                <label for="">Title</label>
+                <input type="text" name="" id="title" value="">
+            </div>
+            <div>
+                <label for="">Author</label>
+                <input  type="text" name="" id="author" value="">
+            </div>
+            <div>
+                <label for="">Content</label>
+                <textarea  name="" id="content" cols="30" rows="10" id="content"></textarea>
+            </div>
+            
+        </form>
+        <button v-on:click.prevent="createPost()" >Create</button>
+            
+        <main id="output" v-for="(item, index) in post" :key="index">
+            <div class="post">
+                <p>{{item.title}}</p>
+                <p>{{item.summary}}</p>
+                <p>{{item.author}}</p>
+                {{index}}
+                <button v-on:click.prevent="editPost(index)">edit</button>
+                <button v-on:click.prevent="deletePost(index)">delete</button>
+            </div>
+        </main>
+            
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
