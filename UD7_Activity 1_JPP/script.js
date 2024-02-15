@@ -4,16 +4,16 @@ createApp({
     data() {
         return {
             post:[
-                {
+                /* {
                     title:"title",
                     summary:"test",
                     content:"test",
                     author:"test",
-                    image:"",
+                    image:"./img/img_test.png",
                     creation_date:new Date(Date.now()).toLocaleDateString(),
                     publication_date:"",
                     status:"draft"
-                }
+                } */
                 
             ],  
         }
@@ -23,7 +23,10 @@ createApp({
             let title = document.getElementById("title");
             let author = document.getElementById("author");
             let content = document.getElementById("content");
-            console.log();
+            let imageSaved = uploadAndSaveImage();
+            
+
+            
             if(title.value !== "" && author.value !== ""){
                 this.post.push(
                     {
@@ -31,7 +34,7 @@ createApp({
                         summary:content.value.split(" ",30).join(" "),
                         content:content.value,
                         author:author.value,
-                        image:"",
+                        image:imageSaved,
                         creation_date:new Date(Date.now()).toLocaleDateString(),
                         publication_date:"",
                         status:"draft"
@@ -41,11 +44,12 @@ createApp({
             
         },
         editPost:function(id){
-            console.log(this.post[id].title);
+            
             this.post[id].title = document.getElementById("title").value;
             this.post[id].author = document.getElementById("author").value;
             this.post[id].content = document.getElementById("content").value;
             this.post[id].summary = document.getElementById("content").value.split(" ",30).join(" ");
+            this.post[id].image = uploadAndSaveImage();
         },
         deletePost:function(id){
             console.log();
@@ -53,4 +57,12 @@ createApp({
                 
         }
     },
-}).mount('#app')
+}).mount('#app');
+
+function uploadAndSaveImage(){
+    let imageUpload = document.getElementById("image");
+    let imageSaved ="";
+    if(imageUpload.files[0] !== undefined){
+        return imageSaved = URL.createObjectURL(imageUpload.files[0]);
+    }
+}
