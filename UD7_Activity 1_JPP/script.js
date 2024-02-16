@@ -4,7 +4,7 @@ createApp({
     data() {
         return {
             post:[
-                /* {
+                {
                     title:"title",
                     summary:"test",
                     content:"test",
@@ -13,21 +13,18 @@ createApp({
                     creation_date:new Date(Date.now()).toLocaleDateString(),
                     publication_date:"",
                     status:"draft"
-                } */
+                }
                 
             ],  
         }
     },  
     methods: {
         createPost:function(){
-            let title = document.getElementById("title");
-            let author = document.getElementById("author");
-            let content = document.getElementById("content");
+            
             let imageSaved = uploadAndSaveImage();
-            
 
-            
             if(title.value !== "" && author.value !== ""){
+                console.log(this.post);
                 this.post.push(
                     {
                         title:title.value,
@@ -40,15 +37,20 @@ createApp({
                         status:"draft"
                     }
                 );
+                title.value = "";
+                author.value = "";
+                content.value = "";
+                this.$refs.image.value = "";
             }
+            
             
         },
         editPost:function(id){
             
-            this.post[id].title = document.getElementById("title").value;
-            this.post[id].author = document.getElementById("author").value;
-            this.post[id].content = document.getElementById("content").value;
-            this.post[id].summary = document.getElementById("content").value.split(" ",30).join(" ");
+            this.post[id].title = title.value;
+            this.post[id].author = author.value;
+            this.post[id].content = content.value;
+            this.post[id].summary = content.value.split(" ",30).join(" ");
             this.post[id].image = uploadAndSaveImage();
         },
         deletePost:function(id){
