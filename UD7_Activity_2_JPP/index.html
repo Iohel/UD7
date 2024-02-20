@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h3>Enter an integer</h3>
+        <input v-model="num" type="number">
+        <input type="button" value="Send" v-on:click="send">
+        <p v-if="error">
+            <small>{{error}}</small>
+        </p>
+        <number v-for="number in numbers" :nombre="number" v-on:clicked-number="numberSelected"></number>
+        <h6 v-if="selectedItem">
+            <span>The number passed is {{selectedItem}}</span>
+        </h6>
+    </div>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
