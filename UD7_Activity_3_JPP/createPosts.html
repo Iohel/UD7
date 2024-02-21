@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form div{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin-top: 1em;
+        }
+        /*30% div 100% imagen*/
+        .post{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 75%;
+            border: 1px black solid;
+            
+            
+        }
+        button{
+            height: fit-content;
+            width: fit-content;
+            margin: 10px;
+            
+        }
+        img{
+            height: auto;
+            width: 25%;
+            border: 2px solid black;
+        }
+        #content_menu{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+            justify-content: space-around;
+        }
+        #button_menu{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            margin-right: 5em;
+        }
+        
+    </style>
+    </head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+
+    <div id="app">
+        <h1>Crear Posts</h1>
+        
+        <form action="">
+            <div>
+                <label for="">Title</label>
+                <input type="text" name="" id="title" value="" maxlength="30">
+            </div>
+            <div>
+                <label for="">Author</label>
+                <input  type="text" name="" id="author" value="" maxlength="30">
+            </div>
+            <div>
+                <label for="">Content</label>
+                <textarea  name="" id="content" cols="30" rows="10" id="content"></textarea>
+            </div>
+            <input type="file" name="" id="image" ref="image">
+            
+        </form>
+        <button v-on:click.prevent="createPost()" >Create</button>
+            
+        <main id="output" v-for="(item, index) in post" :key="index">
+            <div class="post">
+                <img :src=item.image alt="">
+                <div id="content_menu">
+                    <h2>{{item.title}}</h2>
+                    <p>{{item.summary}}</p>
+                    <p>{{item.author}}</p>
+                </div>
+                <div id="button_menu">
+                    <p>{{index}}</p>
+                    <button v-on:click.prevent="editPost(index)">edit</button>
+                    <button v-on:click.prevent="deletePost(index)">delete</button>
+                </div>
+            </div>
+        </main>
+            
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
