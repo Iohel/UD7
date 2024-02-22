@@ -1,6 +1,6 @@
 export default{
-    name: "Footer",
-    props: ["footer"],
+    name: "FooterPost",
+    props: ["footerPost"],
     template:`
         <footer class="container text-center">
             <div class="row  d-none d-md-flex bg-primary">

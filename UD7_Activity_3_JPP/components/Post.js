@@ -2,7 +2,7 @@ export default{
     name:Post,
     props:["post"],
     
-    methods: {
+    /* methods: {
         createPost:function(){
             
             let imageSaved = uploadAndSaveImage();
@@ -42,7 +42,7 @@ export default{
             this.post.splice(id,1);
                 
         }
-    },
+    }, */
     template:`
         
 

@@ -1,9 +1,6 @@
 export default{
-    name:Header,
-    props:["header"],
-    methods: {
-        
-    },
+    name:"HeaderPost",
+    props:["headerpost"],
     template:`
         <header>
             <div>

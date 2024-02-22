@@ -53,27 +53,29 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
 
     <div id="app">
+        
         <h1>Crear Posts</h1>
         
         <form action="">
             <div>
                 <label for="">Title</label>
-                <input type="text" name="" id="title" value="" maxlength="30">
+                <input type="text" v-model="post.title" id="title" value="" maxlength="30">
             </div>
             <div>
                 <label for="">Author</label>
-                <input  type="text" name="" id="author" value="" maxlength="30">
+                <input  type="text" v-model="post.author" id="author" value="" maxlength="30">
             </div>
             <div>
                 <label for="">Content</label>
-                <textarea  name="" id="content" cols="30" rows="10" id="content"></textarea>
+                <textarea  v-model="post.content" id="content" cols="30" rows="10" id="content"></textarea>
             </div>
-            <input type="file" name="" id="image" ref="image">
+            <input type="file" v-on:change="console.log(this.$refs.image.value);" id="image" ref="image">
             
         </form>
         <button v-on:click.prevent="createPost()" >Create</button>
             
-        <main id="output" v-for="(item, index) in post" :key="index">
+        
+        <main id="output" v-for="(item, index) in posts" :key="index">
             <div class="post">
                 <img :src=item.image alt="">
                 <div id="content_menu">
@@ -92,6 +94,6 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
