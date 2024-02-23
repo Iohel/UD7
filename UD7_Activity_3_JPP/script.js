@@ -1,3 +1,6 @@
+import Post from "./components/Post.js";
+import Headerpost from "./components/Header.js";
+import Footerpost from "./components/Footer.js";
 const { createApp } = Vue;
 
 createApp({
@@ -16,14 +19,18 @@ createApp({
         posts: [],
     };
   },
+  components:{
+    Post,
+    Headerpost,
+    Footerpost
+  },
   methods: {
     createPost: function () {
       /* let imageSaved = uploadAndSaveImage(); */
 
       if (this.post.title !== "" && this.post.author !== "") {
         this.post.summary = this.post.content.split(" ", 30).join(" ");
-        console.log(this.post);
-        this.posts.push(this.post);
+        this.posts.push({...this.post});
         this.post.title = "";
         this.post.author = "";
         this.post.content = "";
@@ -31,15 +38,15 @@ createApp({
       }
     },
     editPost: function (id) {
-      this.posts[id].title = title.value;
-      this.posts[id].author = author.value;
-      this.posts[id].content = content.value;
-      this.posts[id].summary = content.value.split(" ", 30).join(" ");
+      id.title = this.post.title;
+      id.author = this.post.author;
+      id.content = this.post.content;
+      id.summary = this.post.content.split(" ", 30).join(" ");
       /* this.posts[id].image = uploadAndSaveImage(); */
     },
     deletePost: function (id) {
-      console.log();
-      this.posts.splice(id, 1);
+      console.log(this.posts.indexOf(id));
+      this.posts.splice(this.posts.indexOf(id), 1);
     },
   },
 }).mount("#app");

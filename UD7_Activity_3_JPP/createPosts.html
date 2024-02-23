@@ -51,8 +51,8 @@
     </head>
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
-
     <div id="app">
+        <Headerpost></Headerpost>
         
         <h1>Crear Posts</h1>
         
@@ -75,25 +75,14 @@
         <button v-on:click.prevent="createPost()" >Create</button>
             
         
-        <main id="output" v-for="(item, index) in posts" :key="index">
-            <div class="post">
-                <img :src=item.image alt="">
-                <div id="content_menu">
-                    <h2>{{item.title}}</h2>
-                    <p>{{item.summary}}</p>
-                    <p>{{item.author}}</p>
-                </div>
-                <div id="button_menu">
-                    <p>{{index}}</p>
-                    <button v-on:click.prevent="editPost(index)">edit</button>
-                    <button v-on:click.prevent="deletePost(index)">delete</button>
-                </div>
-            </div>
-        </main>
+        <post id="output" v-for="(item, index) in posts" :post="item" v-on:edit-item="editPost" v-on:delete-item="deletePost">
+            
+            
+        </post>
             
 
+        <Footerpost></Footerpost>
     </div>
-
     <script type="module" src="script.js"></script>
 </body>
 </html>
