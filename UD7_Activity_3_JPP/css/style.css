@@ -1,3 +1,5 @@
+
+
 body {
   text-align: center;
   background-color: #f2f4f3;
@@ -33,6 +35,21 @@ body header section i {
 body footer {
   background-color: #8dc63e;
   border-color: #333333;
+}
+footer div{
+  display: flex;
+  justify-content: space-around;
+}
+
+footer div a{
+  text-decoration: none;
+  color: black;
+}
+
+footer div a:hover{
+  text-decoration: none;
+  color: black;
+  background-color: #3d85c6;
 }
 
 body div article {
