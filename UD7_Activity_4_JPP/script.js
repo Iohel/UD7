@@ -1,6 +1,9 @@
-import Post from "./components/Post.js";
+import router from "./router.js";
+import Post from "./components/Post.js"
 import Headerpost from "./components/Header.js";
 import Footerpost from "./components/Footer.js";
+import Creator from "./components/Creator.js";
+import Output from "./components/Output.js";
 const { createApp } = Vue;
 
 
@@ -21,9 +24,12 @@ createApp({
     };
   },
   components:{
-    Post,
+    router,
     Headerpost,
-    Footerpost
+    Footerpost,
+    Creator,
+    Output,
+    Post
   },
   mounted() {
     this.posts = JSON.parse(localStorage.getItem("posts"));
@@ -54,5 +60,5 @@ createApp({
       localStorage.setItem("posts",JSON.stringify(this.posts));
     },
   },
-}).mount("#app");
+}).use(router).mount("#app");
 

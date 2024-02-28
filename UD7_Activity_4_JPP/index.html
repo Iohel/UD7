@@ -6,23 +6,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/post.css">
     <link rel="stylesheet" href="./css/style.css">
-    </head>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
+    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>  
+     
+</head>
 <body>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
     <div id="app">
         <Headerpost></Headerpost>
         
-        
-            
-        <div class="content">
-            <post id="output" v-for="(item, index) in posts" :post="item" v-on:edit-item="editPost" v-on:delete-item="deletePost">
-            
-            
-            </post>
-        </div>
-        
-            
-
+        <!-- <router-view></router-view> -->
+        <Creator></Creator>
         <Footerpost></Footerpost>
     </div>
     <script type="module" src="script.js"></script>

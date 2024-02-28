@@ -1,5 +1,9 @@
+
 export default{
     Name:"Creator",
+    components:{
+        
+    },
     template:`
 
         <h1>Crear Posts</h1>
