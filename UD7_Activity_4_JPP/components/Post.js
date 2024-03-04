@@ -8,8 +8,10 @@ export default{
         deletePostEvent: function(item){
             this.$emit("delete-item", item)
         }
+        
     },
     template:`
+    
     <div class="post">
         <img src=post.image alt="">
         <div id="content_menu">

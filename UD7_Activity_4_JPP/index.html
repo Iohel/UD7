@@ -14,8 +14,11 @@
     <div id="app">
         <Headerpost></Headerpost>
         
-        <!-- <router-view></router-view> -->
-        <Creator></Creator>
+        
+        
+        <router-view :posts="posts"></router-view>
+        <!-- <Creator :posts = "posts"></Creator>
+        <Outputpost :posts = "posts" ></Outputpost> -->
         <Footerpost></Footerpost>
     </div>
     <script type="module" src="script.js"></script>

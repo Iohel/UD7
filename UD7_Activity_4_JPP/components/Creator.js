@@ -1,9 +1,40 @@
 
 export default{
     Name:"Creator",
-    components:{
+    methods: {
         
+        createPost: function () {
+
+            if (this.post.title !== "" && this.post.author !== "") {
+              this.post.summary = this.post.content.split(" ", 30).join(" ");
+              this.posts.push({...this.post});
+              this.post.title = "";
+              this.post.author = "";
+              this.post.content = "";
+              localStorage.setItem("posts",JSON.stringify(this.posts));
+
+              this.$router.push("/");
+            }
+            
+            
+        },
     },
+    props:["posts"],
+    
+    data() {
+        return {
+            post: {
+                title: "",
+                content: "",
+                summary: "",
+                author: "",
+                image: null,
+                creation_date: new Date(Date.now()).toLocaleDateString(),
+                publication_date: "",
+                status: "draft",
+            },
+        };
+      },
     template:`
 
         <h1>Crear Posts</h1>
@@ -21,7 +52,7 @@ export default{
                 <label for="">Content</label>
                 <textarea  v-model="post.content" id="content" cols="30" rows="10" id="content"></textarea>
             </div>
-            <input type="file" v-on:change="console.log(this.$refs.image.value);" id="image" ref="image">
+            <input type="file" v-on:change="console.log(this.$refs.image).value;" id="image" ref="image">
             
         </form>
         <button v-on:click.prevent="createPost()" >Create</button>
