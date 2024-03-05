@@ -58,8 +58,9 @@ export default{
         };
       },
     template:`
-
-        <h1>Crear Posts</h1>
+    
+        <h1 v-if="editing">Actualizar Post</h1>
+        <h1 v-else>Crear Posts</h1>
             
         <form action="">
             <div>
