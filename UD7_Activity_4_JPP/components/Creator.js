@@ -18,6 +18,27 @@ export default{
             
             
         },
+
+        editPostEvent: function(posts){
+            
+            let item = posts[this.$route.params.id];
+            
+            item.title = this.post.title;
+            item.author = this.post.author;
+            item.content = this.post.content;
+            item.summary = this.post.content.split(" ", 30).join(" ");
+            localStorage.setItem("posts",JSON.stringify(this.posts));
+            this.$router.push("/");
+        }
+
+
+        
+
+    },
+    mounted() {
+        if (this.$route.params.id !== "") {
+            this.editing = true;
+        }
     },
     props:["posts"],
     
@@ -33,6 +54,7 @@ export default{
                 publication_date: "",
                 status: "draft",
             },
+            editing:false,
         };
       },
     template:`
@@ -55,7 +77,8 @@ export default{
             <input type="file" v-on:change="console.log(this.$refs.image).value;" id="image" ref="image">
             
         </form>
-        <button v-on:click.prevent="createPost()" >Create</button>
+        <button v-if="editing" v-on:click.prevent="editPostEvent(posts)" >Update</button>
+        <button v-else v-on:click.prevent="createPost()" >Create</button>
     
     `
 }

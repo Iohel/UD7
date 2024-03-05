@@ -1,9 +1,10 @@
 export default{
     name:"Post",
-    props:["post"],
+    props:["post","index"],
     methods: {
-        editPostEvent: function(item){
-            this.$emit("edit-item", item);
+        editPostRouter: function(index){
+            this.$router.push("/creator/"+index);
+            
         },
         deletePostEvent: function(item){
             this.$emit("delete-item", item)
@@ -21,7 +22,7 @@ export default{
         </div>
         <div id="button_menu">
             
-            <button v-on:click.prevent="editPostEvent(post)">edit</button>
+            <button v-on:click.prevent="editPostRouter(index)">edit</button>
             <button v-on:click.prevent="deletePostEvent(post)">delete</button>
         </div>
     </div>
